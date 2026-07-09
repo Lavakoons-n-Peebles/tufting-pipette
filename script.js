@@ -5,7 +5,12 @@ const img = new Image();
 let isDropperActive = false;
 let imgPixels = null;
 let currentFormat = 'csv'; // csv, json
-       
+// Image State
+let isFlipped = false;
+let isFullscreen = false;
+
+let originalContainerStyle = {};
+
 const TABLE_ROW_TEMPLATE = `
     <td></td>
     <td><div class="color-preview" style="background-color: #{{hex}};"></div></td>
@@ -113,6 +118,12 @@ function setupEventListeners() {
             autoExtractPalette(searchDepth);
         });
     }   
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isFullscreen) {
+            handleFullscreenMode();
+        }
+    });    
 }
 
 function initMutationObserver() {
@@ -468,3 +479,4 @@ new Sortable(document.querySelector('#colors-table tbody'), {
     animation: 150,
     ghostClass: 'sortable-ghost'
 });
+

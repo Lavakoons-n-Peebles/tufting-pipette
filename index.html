@@ -1,80 +1,92 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Tufting Studio Analytics</title>
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<title>Tufting Studio Analytics</title>
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 </head>
+
 <body>
 	<div class="actions-panel">
-	    <label class="btn-action btn-pick" title="Open Image">
-	        <i class="fa-solid fa-folder-open"></i>
-	        <input type="file" id="image-loader" accept="image/*" class="hidden">
-	    </label>
-	    <button class="btn-action btn-pick" id="start-pick" title="Pick up">&#128269;</button>
+		<label class="btn-action btn-pick" title="Open Image">
+			<i class="fa-solid fa-folder-open"></i>
+			<input type="file" id="image-loader" accept="image/*" class="hidden">
+		</label>
+		<button class="btn-action btn-pick" id="start-pick" title="Pick up">&#128269;</button>
 		<span class="divider-vertical"></span>
+		<!-- <div class="tool-group">
+			<button id="flip-image" class="btn-action" title="Flip Image Horizontally">
+				<i class="fa-solid fa-right-left"></i>
+			</button>
+			<button id="fullscreen-mode" class="btn-action" title="Toggle Fullscreen">
+				<i class="fa-solid fa-expand"></i>
+			</button>
+		</div> -->
+		<span class="divider-vertical"></span>
+		<label>Search depth: <input type="number" id="search-depth" value="24" min="2" max="50"></label>
 		<button class="btn-action" id="auto-palette">
 			<i class="fa-solid fa-wand-magic-sparkles"></i> Magic
-		</button>                         
-		<label>Search depth: <input type="number" id="search-depth" value="24" min="2" max="50"></label>
-	</div>              
-	
-	
-	
-    <div class="container">
+		</button>
+	</div>
+
+	<div class="container">
 
 		<div class="canvas-box" style="position: relative;">
-		    <canvas id="canvas" style="z-index: 1;"></canvas>
-		    <canvas id="highlight-layer" style="position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none;"></canvas>
+			<canvas id="canvas" style="z-index: 1;"></canvas>
+			<canvas id="highlight-layer"
+				style="position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none;"></canvas>
 		</div>
 
 		<div id="fog-preview-container" class="hidden">
-		    <p>Original view:</p>
-		    <img id="fog-preview" src="" style="width: 100px;">
+			<p>Original view:</p>
+			<img id="fog-preview" src="" style="width: 100px;">
 		</div>
 
-        <div class="table-box">
+		<div class="table-box">
 			<div class="actions-panel">
-			    <button class="btn-action btn-disable-empty" id="copy-all"><i class="fa-solid fa-clipboard"></i> Copy</button>
-			    <button class="btn-action" id="paste-all"><i class="fa-solid fa-file-import"></i> Paste</button>
-			    <button class="btn-action btn-disable-empty" id="clear-table">Clear</button>                                            
-			    <span class="divider-vertical"></span>
-			    <label class="btn-action">
-			        <i class="fa-solid fa-folder-open"></i> Import 
-			        <input type="file" id="project-loader" class="hidden">
-			    </label>
-			    <button class="btn-action" id="save-project"><i class="fa-solid fa-floppy-disk"></i> Download</button>
-			    <div class="format-control">
-				    <label for="format-select">Format:</label>
-				    <select id="format-select" class="btn-style">
-				        <option value="csv">CSV</option>
-				        <option value="json">JSON</option>
-				    </select>
+				<button class="btn-action btn-disable-empty" id="copy-all"><i class="fa-solid fa-clipboard"></i>
+					Copy</button>
+				<button class="btn-action" id="paste-all"><i class="fa-solid fa-file-import"></i> Paste</button>
+				<button class="btn-action btn-disable-empty" id="clear-table">Clear</button>
+				<span class="divider-vertical"></span>
+				<label class="btn-action">
+					<i class="fa-solid fa-folder-open"></i> Import
+					<input type="file" id="project-loader" class="hidden">
+				</label>
+				<button class="btn-action" id="save-project"><i class="fa-solid fa-floppy-disk"></i> Download</button>
+				<div class="format-control">
+					<label for="format-select">Format:</label>
+					<select id="format-select" class="btn-style">
+						<option value="csv">CSV</option>
+						<option value="json">JSON</option>
+					</select>
 				</div>
 			</div>
 			<table id="colors-table">
-			    <thead>
-			        <tr>
-			            <th>#</th>
-			            <th>Color</th>
-			            <th>HEX</th>
-			            <th>
-			            	<span id="total-percent">0%</span>
-			                <button id="sort-percent" class="btn-sort" title="Сортировать по убыванию">
-						        <i class="fa-solid fa-sort-down"></i>
-						    </button>
-			            </th>
-			            <th></th>
-			            <th>Description</th>
-			        </tr>
-			    </thead>
-			    <tbody></tbody>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Color</th>
+						<th>HEX</th>
+						<th>
+							<span id="total-percent">0%</span>
+							<button id="sort-percent" class="btn-sort" title="Сортировать по убыванию">
+								<i class="fa-solid fa-sort-down"></i>
+							</button>
+						</th>
+						<th></th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
 			</table>
 		</div>
-    </div>
+	</div>
 
-    <script src="script.js"></script>
+	<script src="script.js"></script>
 </body>
+
 </html>
