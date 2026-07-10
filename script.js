@@ -334,9 +334,6 @@ function flipImage() {
     
     // Critical: Update the global imgPixels buffer for the pipette
     imgPixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    
-    // Optionally trigger re-extraction if needed
-    autoExtractPalette();
 }
 
 async function handlePaste() {
@@ -460,7 +457,7 @@ function updateTotalPercent() {
     const el = document.getElementById('total-percent');
     if (el) {
         el.innerText = `${total.toFixed(1)}%`;
-        el.style.color = total > 100 ? 'red' : 'inherit';
+        el.style.color = total > 100 ? 'green' : 'inherit';
     }
 
     updateUIState();
@@ -472,7 +469,6 @@ function parseData(raw, format) {
 
     const lines = raw.trim().split('\n').filter(line => line);
     
-    // Р‘РµСЂРµРј РїРµСЂРІСѓСЋ СЃС‚СЂРѕРєСѓ, С‡С‚РѕР±С‹ РѕРїСЂРµРґРµР»РёС‚СЊ СЂР°Р·РґРµР»РёС‚РµР»СЊ
     const sample = lines[0];
     const separators = ['\t', ';', ','];
     let sep = separators.find(s => sample.includes(s)) || ',';

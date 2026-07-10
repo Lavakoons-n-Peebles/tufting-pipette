@@ -53,7 +53,7 @@ body { font-family: 'Segoe UI', sans-serif; color: var(--text-color); margin: 20
    4. TABLE STYLES
    ========================================================================== */
 #colors-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
-#colors-table th, #colors-table td { padding: 10px; border-bottom: 1px solid var(--border-color); text-align: left; }
+#colors-table th, #colors-table td { padding: 10px; border-bottom: 1px solid var(--border-color); text-align: center; }
 
 /* Column Widths */
 #colors-table th:nth-child(1) { width: 40px; }
