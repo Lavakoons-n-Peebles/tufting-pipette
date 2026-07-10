@@ -2,7 +2,12 @@
 
 **Tufting Pipette** is a web tool designed to simplify color palette management for tufting projects. It allows users to extract precise color schemes directly from reference images, ensuring your yarn selection perfectly matches your design.
 
-[Live Tool: Lavakoons-n-Peebles/Tufting-Pipette](https://lavakoons-n-peebles.github.io/tufting-pipette/)
+[Live Tool: Tufting-Pipette](https://lavakoons-n-peebles.github.io/tufting-pipette/)
+
+## Interface Preview
+
+![Tufting Pipette preview](images/preview.png)
+
 
 ## Key Features
 
