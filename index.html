@@ -17,9 +17,9 @@
 		</label>
 		<button class="btn-action btn-pick" id="start-pick" title="Pick up">&#128269;</button>
 		<span class="divider-vertical"></span>
-		<!-- <button id="flip-image" class="btn-action" title="Flip Image Horizontally">
+		<button id="flip-image" class="btn-action" title="Flip Image Horizontally">
 			<i class="fa-solid fa-right-left"></i>
-		</button> -->
+		</button>
 		<span class="divider-vertical"></span>
 		<label>Search depth: <input type="number" id="search-depth" value="24" min="2" max="50"></label>
 		<button class="btn-action" id="auto-palette">
@@ -70,10 +70,14 @@
 						<th>Color</th>
 						<th>HEX</th>
 						<th>
+							<button id="btn-normalize" class="btn-normalize" title="Normalize percentages to 100%">
+        						<i class="fa-solid fa-arrows-to-circle"></i>
+    						</button>
 							<span id="total-percent">0%</span>
 							<button id="sort-percent" class="btn-sort" title="Сортировать по убыванию">
 								<i class="fa-solid fa-sort-down"></i>
 							</button>
+							
 						</th>
 						<th></th>
 						<th>Description</th>
