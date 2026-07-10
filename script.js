@@ -711,13 +711,21 @@ function autoExtractPalette(searchDepth = 24) {
         
     const finalTotal = filtered.reduce((sum, item) => sum + item[1], 0);
 
+    const oldData = getTableData();
+    const notesMap = oldData.reduce((acc, item) => {
+        if (item.hex) acc[item.hex] = item.note;
+        return acc;
+    }, {});    
+
     document.querySelector('#colors-table tbody').innerHTML = '';
 
     filtered.forEach(([rgb, freq]) => {
         const [r, g, b] = rgb.split(',').map(Number);
         const hex = rgbToHex(r, g, b);
         const percent = ((freq / finalTotal) * 100).toFixed(1);
-        addColorToTable(hex, percent);
+        const note = notesMap[hex.replace('#', '')] || '';
+
+        addColorToTable(hex, percent, note);
     });
     
     updateTotalPercent();
