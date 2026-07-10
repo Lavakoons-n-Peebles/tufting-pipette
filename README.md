@@ -6,6 +6,10 @@
 
 ![Tufting Pipette preview](images/preview.png)
 
+Examples: use the highlighting
+
+![Tufting Pipette use the highlighting](images/001.png)
+
 ## Key Features
 
 * **Smart Extraction:** Uses an advanced density-based algorithm to identify core colors while filtering out noise, shadows, and anti-aliasing artifacts.
