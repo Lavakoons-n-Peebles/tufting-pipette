@@ -256,3 +256,10 @@ body { font-family: 'Segoe UI', sans-serif; color: var(--text-color); margin: 20
 .toast-error { background-color: #d9534f; }
 .toast-success { background-color: #5cb85c; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.image-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}

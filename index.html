@@ -32,17 +32,18 @@
 
 	<div class="container">
 
-		<div class="canvas-box" style="position: relative;">
-			<canvas id="canvas" style="z-index: 1;"></canvas>
-			<canvas id="highlight-layer"
-				style="position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none;"></canvas>
-		</div>
+		<div class="image-layout">
+			<div class="canvas-box" style="position: relative;">
+				<canvas id="canvas" style="z-index: 1;"></canvas>
+				<canvas id="highlight-layer"
+					style="position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none;"></canvas>
+			</div>
 
-		<div id="fog-preview-container" class="hidden">
-			<p>Original view:</p>
-			<img id="fog-preview" src="" style="width: 100px;">
-		</div>
-
+			<div id="fog-preview-container" class="hidden">
+				<p>Original view:</p>
+				<img id="fog-preview" src="" style="width: 100px;">
+			</div>
+		</div>		
 		<div class="table-box">
 			<div class="actions-panel">
 				<button class="btn-action btn-disable-empty" id="copy-all"><i class="fa-solid fa-clipboard"></i>
