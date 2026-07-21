@@ -12,6 +12,7 @@ let originalContainerStyle = {};
 let dataColors = []; // Array of objects: { hex: string, percent: number, note: string }
 
 const TABLE_ROW_TEMPLATE = `
+    <td class="drag-handle" title="Drag">☰</td>
     <td></td>
     <td><div class="color-preview" style="background-color: #{{hex}};"></div></td>
     <td class="hex-text">#{{hex}}</td>
@@ -147,13 +148,13 @@ function addColorToTable(hex, percent, note = '') {
         }
        
         row.dataset.percent = cleanValue;
-        updateTotalPercent();
+        updateTableInfo();
     });
 
     percentInput.addEventListener('blur', (e) => {
         if (!e.target.textContent.trim()) e.target.textContent = '0';
         console.log('!');
-        updateTotalPercent();
+        updateTableInfo();
     });
     //-- Editable percentage handler
 
@@ -265,7 +266,7 @@ function initMutationObserver() {
     
     const observer = new MutationObserver(() => {
         observer.disconnect(); 
-        updateTotalPercent();
+        updateTableInfo();
         observer.observe(tbody, { childList: true }); 
     });
     
@@ -474,13 +475,13 @@ function getTableData() {
 /**
  * Updates the total percentage in the UI and recalculates row numbers.
  */
-function updateTotalPercent() {
+function updateTableInfo() {
     const rows = document.querySelectorAll('#colors-table tbody tr');
     let total = 0;
 
     rows.forEach((row, i) => {
         // Update row number
-        row.cells[0].innerText = i + 1;
+        row.cells[1].innerText = i + 1;
         
         // Calculate total based on current dataset.percent
         const val = parseFloat(row.dataset.percent || 0);
@@ -565,7 +566,7 @@ function normalizePercentages() {
             if (percentInput) percentInput.textContent = row.dataset.percent;
         });
         
-        updateTotalPercent();
+        updateTableInfo();
         showToast('Normalized to 100%', 'success');
     });
 }
@@ -760,7 +761,7 @@ function autoExtractPalette(searchDepth = 24) {
         addColorToTable(hex, percent, note);
     });
     
-    updateTotalPercent();
+    updateTableInfo();
 }
 
 function updateUIState() {
@@ -779,6 +780,7 @@ updateUIState();
 // DRAG AND DROP
 new Sortable(document.querySelector('#colors-table tbody'), {
     animation: 150,
-    ghostClass: 'sortable-ghost'
+    ghostClass: 'sortable-ghost',
+    handle: '.drag-handle'
 });
 
